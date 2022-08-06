@@ -49,7 +49,6 @@ class HomeCategories extends StatelessWidget {
                           placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
                           width: 60,
                         ),
-                        const SizedBox(),
                         Text(
                           state.categories[index].name,
                           textAlign: TextAlign.center,

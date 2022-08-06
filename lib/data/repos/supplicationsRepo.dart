@@ -33,6 +33,8 @@ class SupplicationsRepo {
         final id = element.id;
         final data = element.data();
 
+        Timestamp _timestamp = data['createdAt'];
+
         _supplications[categoryId]!.add(
           Supplication(
             supplicationId: id,
@@ -41,7 +43,7 @@ class SupplicationsRepo {
             englishTranslation: data['englishTranslation'],
             romanArabic: data['romanArabic'],
             categoryId: data['categoryId'],
-            index: data['index'] ?? 0,
+            createdAt: DateTime.parse(_timestamp.toDate().toString()),
           ),
         );
       }

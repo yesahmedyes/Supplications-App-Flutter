@@ -25,7 +25,7 @@ class SupplicationsListScreen extends StatelessWidget {
             }
 
             final List<Supplication> _supplications = state.supplications;
-            _supplications.sort((a, b) => b.index.compareTo(a.index));
+            _supplications.sort((a, b) => b.createdAt.compareTo(a.createdAt));
 
             return ListView.builder(
               itemCount: _supplications.length + 2,

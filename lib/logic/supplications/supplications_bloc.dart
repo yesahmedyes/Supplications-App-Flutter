@@ -13,6 +13,7 @@ class SupplicationsBloc extends Bloc<SupplicationsEvent, SupplicationsState> {
       : _supplicationsRepo = supplicationsRepo,
         super(SupplicationsInitialState()) {
     on<SupplicationsOpenEvent>((event, emit) async {
+      emit(SupplicationsInitialState());
       final List<Supplication> supplications = await _supplicationsRepo.fetchSupplications(event.categoryId);
       add(SupplicationsSuccessEvent(supplications: supplications));
     });

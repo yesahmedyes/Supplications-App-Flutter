@@ -5,7 +5,7 @@ class Supplication {
   final String englishTranslation;
   final String romanArabic;
   final String categoryId;
-  final int index;
+  final DateTime createdAt;
 
   Supplication({
     required this.supplicationId,
@@ -14,6 +14,6 @@ class Supplication {
     required this.englishTranslation,
     required this.romanArabic,
     required this.categoryId,
-    required this.index,
+    required this.createdAt,
   });
 }
