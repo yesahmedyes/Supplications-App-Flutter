@@ -3,25 +3,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supplications_app/data/models/supplication.dart';
 import 'package:supplications_app/logic/audio/audio_bloc.dart';
 import 'package:supplications_app/logic/supplications/supplications_bloc.dart';
+import 'package:supplications_app/presentation/widgets/favoritesAppBar.dart';
 import 'package:supplications_app/presentation/widgets/justAudioWidget.dart';
-import 'package:supplications_app/presentation/widgets/supplicationsAppBar.dart';
 import 'package:supplications_app/presentation/widgets/supplicationsCard.dart';
 
-class SupplicationsListScreen extends StatelessWidget {
-  final String category;
-
-  const SupplicationsListScreen({Key? key, required this.category}) : super(key: key);
+class FavoriteSupplicationsScreen extends StatelessWidget {
+  const FavoriteSupplicationsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF2f2f2),
-      appBar: SupplicationsAppBar(category: category),
+      appBar: const FavoritesAppBar(),
       body: BlocBuilder<SupplicationsBloc, SupplicationsState>(
         builder: (context, state) {
           if (state is SupplicationsLoadedState) {
             if (state.supplications.isEmpty) {
-              return const Center(child: Text('Nothing availaible for this category yet.'));
+              return const Center(child: Text('Nothing availaible in favorites yet.'));
             }
 
             final List<Supplication> _supplications = state.supplications;
@@ -41,7 +39,7 @@ class SupplicationsListScreen extends StatelessWidget {
                       url = state.url;
                     }
 
-                    return SupplicationCard(key: GlobalKey(), supplication: _supplications[index - 1], playing: (url == _supplications[index - 1].audio));
+                    return SupplicationCard(supplication: _supplications[index - 1], playing: (url == _supplications[index - 1].audio));
                   },
                 );
               },

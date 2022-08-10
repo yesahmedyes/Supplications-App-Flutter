@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supplications_app/data/models/supplication.dart';
 import 'package:supplications_app/logic/audio/audio_bloc.dart';
+import 'package:supplications_app/logic/favorites/favorites_bloc.dart';
+import 'package:supplications_app/presentation/widgets/supplicationFavoriteButton.dart';
+import 'package:supplications_app/presentation/widgets/supplicationsShareButton.dart';
 
 class SupplicationCard extends StatelessWidget {
   final Supplication supplication;
@@ -35,7 +38,7 @@ class SupplicationCard extends StatelessWidget {
                 context.read<AudioBloc>().add(AudioStartEvent(url: supplication.audio));
               },
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 28),
                 child: Column(
                   children: [
                     SizedBox(height: (duration <= 1) ? 10 : 4),
@@ -70,14 +73,21 @@ class SupplicationCard extends StatelessWidget {
                         textAlign: TextAlign.left,
                       ),
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 16),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
+                        Row(
+                          children: [
+                            SupplicationsShareButton(supplication: supplication),
+                            const SizedBox(width: 8),
+                            SupplicationsFavoriteButton(supplication: supplication),
+                          ],
+                        ),
                         Card(
                           elevation: 1,
                           color: const Color.fromRGBO(85, 85, 85, 1),
-                          margin: const EdgeInsets.only(top: 16, right: 12),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                           child: const Padding(
                             padding: EdgeInsets.all(8.0),
@@ -85,7 +95,7 @@ class SupplicationCard extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),

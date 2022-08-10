@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:supplications_app/data/models/supplication.dart';
 import 'package:supplications_app/data/repos/supplicationsRepo.dart';
@@ -14,7 +17,18 @@ class SupplicationsBloc extends Bloc<SupplicationsEvent, SupplicationsState> {
         super(SupplicationsInitialState()) {
     on<SupplicationsOpenEvent>((event, emit) async {
       emit(SupplicationsInitialState());
+
       final List<Supplication> supplications = await _supplicationsRepo.fetchSupplications(event.categoryId);
+
+      add(SupplicationsSuccessEvent(supplications: supplications));
+    });
+    on<SupplicationsFavoriteEvent>((event, emit) async {
+      emit(SupplicationsInitialState());
+
+      final List<Supplication> supplications = await _supplicationsRepo.fetchFavoriteSupplications();
+
+      print(supplications);
+
       add(SupplicationsSuccessEvent(supplications: supplications));
     });
     on<SupplicationsSuccessEvent>((event, emit) {

@@ -9,6 +9,10 @@ class SupplicationsOpenEvent extends SupplicationsEvent {
   SupplicationsOpenEvent({required this.categoryId});
 }
 
+class SupplicationsFavoriteEvent extends SupplicationsEvent {
+  SupplicationsFavoriteEvent();
+}
+
 class SupplicationsSuccessEvent extends SupplicationsEvent {
   final List<Supplication> supplications;
 

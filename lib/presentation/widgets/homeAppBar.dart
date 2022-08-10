@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supplications_app/logic/supplications/supplications_bloc.dart';
+import 'package:supplications_app/presentation/screens/favoriteSupplicationsScreen.dart';
 
 class HomeAppBar extends StatefulWidget {
   final ScrollController scrollController;
@@ -68,6 +71,16 @@ class _HomeAppBarState extends State<HomeAppBar> {
           ),
         ),
       ),
+      actions: [
+        IconButton(
+          onPressed: () {
+            context.read<SupplicationsBloc>().add(SupplicationsFavoriteEvent());
+            Navigator.of(context).push(MaterialPageRoute<void>(builder: (BuildContext context) => const FavoriteSupplicationsScreen()));
+          },
+          icon: const Icon(Icons.favorite_border, color: Colors.white, size: 22),
+        ),
+        const SizedBox(width: 12),
+      ],
     );
   }
 }
