@@ -8,11 +8,15 @@ import 'package:supplications_app/logic/categories/categories_bloc.dart';
 import 'package:supplications_app/logic/favorites/favorites_bloc.dart';
 import 'package:supplications_app/logic/supplications/supplications_bloc.dart';
 import 'package:supplications_app/presentation/screens/homeScreen.dart';
+import 'package:upgrader/upgrader.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await Hive.initFlutter();
+
+  // remove on release
+  await Upgrader.clearSavedSettings();
 
   runApp(const MyApp());
 }
@@ -42,7 +46,10 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: HomeScreen(),
+          home: UpgradeAlert(
+            upgrader: Upgrader(showIgnore: false, showLater: false),
+            child: HomeScreen(),
+          ),
         ),
       ),
     );
