@@ -5,7 +5,6 @@ A mobile application built with Flutter that provides a collection of Islamic su
 <div align="center">
   <img src="./images/1.jpeg" alt="Supplications App">
   <img src="./images/2.jpeg" alt="Supplications List">
-  <img src="./images/3.gif" alt="App Demo">
 </div>
 
 ## Features
