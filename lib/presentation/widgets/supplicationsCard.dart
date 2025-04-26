@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supplications_app/data/models/supplication.dart';
 import 'package:supplications_app/logic/audio/audio_bloc.dart';
-import 'package:supplications_app/logic/favorites/favorites_bloc.dart';
 import 'package:supplications_app/presentation/widgets/supplicationFavoriteButton.dart';
 import 'package:supplications_app/presentation/widgets/supplicationsShareButton.dart';
 

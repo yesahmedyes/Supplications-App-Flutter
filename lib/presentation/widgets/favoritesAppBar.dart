@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supplications_app/logic/supplications/supplications_bloc.dart';
 
-class FavoritesAppBar extends StatelessWidget with PreferredSizeWidget {
+class FavoritesAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FavoritesAppBar({Key? key}) : super(key: key);
 
   @override

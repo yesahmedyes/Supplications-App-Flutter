@@ -16,17 +16,17 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: const Color(0xFFF2f2f2),
-      drawer: Drawer(
+      drawer: const Drawer(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 100),
+            padding: EdgeInsets.symmetric(vertical: 100),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text("Supplications", style: TextStyle(color: Colors.black87, fontSize: 20.0, fontWeight: FontWeight.w600)),
                     SizedBox(height: 16),
                     Text(
@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text("By Wafaa Quran Institute", style: TextStyle(color: Colors.black87, fontSize: 16, fontWeight: FontWeight.w500)),
                     SizedBox(height: 14),
                     Text("c 2022", style: TextStyle(color: Colors.black87, fontSize: 16, fontWeight: FontWeight.w500)),

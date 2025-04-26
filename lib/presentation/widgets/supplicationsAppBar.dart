@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supplications_app/logic/supplications/supplications_bloc.dart';
 
-class SupplicationsAppBar extends StatelessWidget with PreferredSizeWidget {
+class SupplicationsAppBar extends StatelessWidget implements PreferredSizeWidget {
   const SupplicationsAppBar({Key? key, required this.category}) : super(key: key);
 
   final String category;

@@ -27,15 +27,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
-      providers: [
-        RepositoryProvider<SupplicationsRepo>(create: (context) => SupplicationsRepo(), lazy: false),
-      ],
+      providers: [RepositoryProvider<SupplicationsRepo>(create: (context) => SupplicationsRepo(), lazy: false)],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider<CategoriesBloc>(
-            create: (context) => CategoriesBloc(supplicationsRepo: context.read<SupplicationsRepo>())..add(CategoriesFetchEvent()),
-            lazy: false,
-          ),
+          BlocProvider<CategoriesBloc>(create: (context) => CategoriesBloc(supplicationsRepo: context.read<SupplicationsRepo>())..add(CategoriesFetchEvent()), lazy: false),
           BlocProvider<SupplicationsBloc>(create: (context) => SupplicationsBloc(supplicationsRepo: context.read<SupplicationsRepo>())),
           BlocProvider<AudioBloc>(create: (context) => AudioBloc()),
           BlocProvider<FavoritesBloc>(create: (context) => FavoritesBloc(supplicationsRepo: context.read<SupplicationsRepo>())..add(FavoritesLoadEvent())),
@@ -43,13 +38,8 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Supplications',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: UpgradeAlert(
-            upgrader: Upgrader(showIgnore: false, showLater: false),
-            child: HomeScreen(),
-          ),
+          theme: ThemeData(primaryColor: Colors.blue, colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(), appBarTheme: const AppBarTheme(backgroundColor: Colors.blue, foregroundColor: Colors.white), drawerTheme: const DrawerThemeData(shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero))),
+          home: UpgradeAlert(upgrader: Upgrader(), child: HomeScreen()),
         ),
       ),
     );
